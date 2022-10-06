@@ -17,11 +17,17 @@ export default NextAuth({
         password: { label: 'Contraseña:', type: 'password', placeholder: 'Contraseña'  },
       },
       async authorize(credentials) {
-        console.log({credentials})
+       // console.log({credentials})
         // return { name: 'Juan', correo: 'juan@google.com', role: 'admin' };
 
-        return await dbUsers.checkUserEmailPassword( credentials!.email, credentials!.password );
+        const returCredentials =  await dbUsers.checkUserEmailPassword( credentials!.email, credentials!.password );
 
+        console.log("###############################")
+
+        console.log(returCredentials)
+console.log("###############################")
+
+        return returCredentials;
       }
     }),
 
